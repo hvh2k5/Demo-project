@@ -1,23 +1,36 @@
 <?php
-// Lấy thông tin sản phẩm từ database hoặc từ các tham số truyền vào URL
+// Kết nối đến cơ sở dữ liệu
+$servername = "localhost";
+$username = "root";
+$password = ""; // xampp: password rỗng
+$database = "maytinh";
+
+// Tạo kết nối
+$conn = mysqli_connect($servername, $username, $password, $database);
+if (!$conn) {
+    die("Kết nối thất bại: " . mysqli_connect_error());
+}
+
+// Kiểm tra xem có tham số id trong URL không
 if (isset($_GET['id'])) {
     $product_id = $_GET['id'];
 
     // Thực hiện truy vấn để lấy thông tin sản phẩm từ CSDL
-    // Ví dụ:
-    // $sql = "SELECT * FROM laptopgaming WHERE id = $product_id";
-    // Sau đó thực hiện truy vấn và lấy dữ liệu từ CSDL
+    $sql = "SELECT * FROM laptopgaming WHERE id = $product_id";
+    $result = mysqli_query($conn, $sql);
 
-    // Tạm thời sử dụng dữ liệu giả định
-    $product_name = "Tên sản phẩm";
-    $product_image = "https://example.com/product_image.jpg";
-    $product_price = "10000000"; // Đơn giá sản phẩm
-
-    // Các dữ liệu khác có thể lấy từ CSDL tương tự như trên
+    if (mysqli_num_rows($result) > 0) {
+        $row = mysqli_fetch_assoc($result);
+        $product_name = $row['name'];
+        $product_image = $row['image'];
+        $product_price = $row['price'];
+    } else {
+        echo "Không tìm thấy sản phẩm!";
+    }
 } else {
     // Nếu không có id sản phẩm được cung cấp, chuyển hướng người dùng về trang chính
     header("Location: trangsanpham.php");
-    exit(); // Dừng kịch bản PHP tại đây
+    exit();
 }
 ?>
 
