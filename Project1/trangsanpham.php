@@ -3,7 +3,7 @@ $servername = "localhost";
 $username = "root";
 $password = ""; // xampp: password rong
 $database = "maytinh";
-
+hhhhhh
 // Create connection
 $conn = mysqli_connect($servername, $username, $password, $database);
 if (!$conn) {
