@@ -1,0 +1,20 @@
+CREATE TABLE Laptop (
+    LaptopID INT AUTO_INCREMENT PRIMARY KEY,
+    CPU VARCHAR(100),
+    RAM VARCHAR(50),
+    HardDrive VARCHAR(100),
+    GPU VARCHAR(100),
+    ScreenSize DECIMAL(4,1),
+    Ports VARCHAR(500),
+    Audio VARCHAR(100),
+    Keyboard VARCHAR(50),
+    LAN VARCHAR(50),
+    WIFI VARCHAR(50),
+    Bluetooth VARCHAR(50),
+    Webcam VARCHAR(50),
+    OperatingSystem VARCHAR(50),
+    Battery VARCHAR(50),
+    Weight DECIMAL(4,2),
+    Color VARCHAR(50),
+    Dimensions VARCHAR(100)
+);
